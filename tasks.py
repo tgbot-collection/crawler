@@ -10,7 +10,9 @@ __author__ = "Benny <benny.think@gmail.com>"
 import contextlib
 import logging
 import os
+import random
 import re
+import time
 from urllib.parse import unquote
 
 import pymongo
@@ -42,6 +44,7 @@ class Douban(Mongo):
 
     @retry(IndexError, tries=3, delay=5)
     def find_douban(self, resource_id: int):
+        time.sleep(random.randint(1, 5))
         session = requests.Session()
         ua = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36"
         session.headers.update({"User-Agent": ua})
