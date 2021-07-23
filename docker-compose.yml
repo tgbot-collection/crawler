@@ -1,0 +1,28 @@
+version: '3.1'
+
+services:
+  redis:
+    image: redis:alpine
+    restart: always
+    logging:
+      driver: none
+    ports:
+      - 192.168.6.202:6379:6379
+
+  mongo:
+    image: mongo
+    restart: always
+    volumes:
+      - ./mongo_data/mongodb:/data/db
+    logging:
+      driver: none
+    ports:
+      - 192.168.6.202:27017:27017
+
+  celery:
+    image: douban
+    restart: always
+    environment:
+      mongo: 192.168.6.202
+      redis: 192.168.6.202
+
