@@ -21,7 +21,7 @@ from retry import retry
 
 mongo_host = os.getenv("mongo") or "localhost"
 redis = os.getenv("redis") or "localhost"
-broker = f"redis://{redis}:6379/0"
+broker = f"redis://{redis}:6379/5"
 app = Celery('craw', broker=broker)
 
 DOUBAN_SEARCH = "https://www.douban.com/search?cat=1002&q={}"
