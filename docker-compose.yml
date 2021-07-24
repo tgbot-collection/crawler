@@ -23,6 +23,6 @@ services:
     image: douban
     restart: always
     environment:
-      mongo: 192.168.6.202
-      redis: 192.168.6.202
+      mongo: 192.168.6.2
+      redis: 192.168.6.2
 
