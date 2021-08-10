@@ -18,13 +18,11 @@ from urllib.parse import unquote
 import pymongo
 import requests
 from bs4 import BeautifulSoup
-from celery import Celery
 from retry import retry
 
+from tasks import app
+
 mongo_host = os.getenv("mongo") or "localhost"
-redis = os.getenv("redis") or "localhost"
-broker = f"redis://{redis}:6379/5"
-app = Celery('craw', broker=broker)
 
 DOUBAN_SEARCH = "https://www.douban.com/search?cat=1002&q={}"
 DOUBAN_DETAIL = "https://movie.douban.com/subject/{}/"
@@ -136,6 +134,6 @@ class Douban(Mongo):
 
 
 @app.task
-def craw(rid: int):
+def douban_craw(rid: int):
     d = Douban()
     d.find_douban(rid)

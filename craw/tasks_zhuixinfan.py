@@ -7,23 +7,21 @@
 
 __author__ = "Benny <benny.think@gmail.com>"
 
-import json
+import logging
+import os
 import random
 import re
 import sys
 import time
+
 import pymongo
-import os
-from celery import Celery
 import requests
 from bs4 import BeautifulSoup
-import logging
+
+from tasks import app
 
 mongo_host = os.getenv("mongo") or "localhost"
-redis = os.getenv("redis") or "localhost"
-broker = f"redis://{redis}:6379/5"
 
-app = Celery('zhuixinfan', broker=broker)
 logging.basicConfig(level=logging.INFO)
 
 

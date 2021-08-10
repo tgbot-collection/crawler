@@ -5,8 +5,6 @@ services:
     image: crawler
     restart: always
     environment:
-      mongo: 192.168.6.2
-      redis: 192.168.6.2
-    command:
-      ["celery", "-A", "zhuixinfan", "worker", "--loglevel=info"]
+      mongo: 192.168.6.55
+      redis: 192.168.6.55
 
