@@ -7,10 +7,10 @@
 
 __author__ = "Benny <benny.think@gmail.com>"
 
-from .tasks_douban import douban_craw
-from .tasks_zhuixinfan import zhuixinfan
+from .douban import douban
+from .zhuixinfan import zhuixinfan
 
 __all__ = [
-    'douban_craw',
+    'douban',
     'zhuixinfan'
 ]

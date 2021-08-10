@@ -19,7 +19,6 @@ import pymongo
 import requests
 from bs4 import BeautifulSoup
 from retry import retry
-
 from tasks import app
 
 mongo_host = os.getenv("mongo") or "localhost"
@@ -134,6 +133,6 @@ class Douban(Mongo):
 
 
 @app.task
-def douban_craw(rid: int):
+def douban(rid: int):
     d = Douban()
     d.find_douban(rid)

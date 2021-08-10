@@ -1,8 +1,10 @@
-version: '3.1'
+version: '2'
 
 services:
   celery:
-    image: crawler
+    build:
+      context: .
+      dockerfile: Dockerfile
     restart: always
     environment:
       mongo: 192.168.6.55

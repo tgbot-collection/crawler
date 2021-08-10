@@ -17,7 +17,6 @@ import time
 import pymongo
 import requests
 from bs4 import BeautifulSoup
-
 from tasks import app
 
 mongo_host = os.getenv("mongo") or "localhost"
